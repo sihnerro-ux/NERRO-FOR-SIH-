@@ -1,0 +1,312 @@
+{
+  "version": "ner-synthetic-v2-all-state",
+  "created_at": "2026-09-03T17:36:34.888377+00:00",
+  "status": "VALIDATED_PROTOTYPE",
+  "data_mode": "SIMULATED",
+  "operational_use": false,
+  "dataset": {
+    "path": "C:\\Users\\jatin\\Desktop\\nerro\\nerro files\\1 september\\SIH Model\\nerro_ml\\data\\generated\\ner_operational_training.csv",
+    "rows": 16000,
+    "states": 8,
+    "corridors": 29
+  },
+  "validation": {
+    "strategy": "state_stratified_group_holdout_by_corridor",
+    "seed": 26002,
+    "train_rows": 11480,
+    "test_rows": 4520,
+    "train_corridors": [
+      "AR-FR-TEZ-TAW",
+      "AR-NH13-BOM-TAW",
+      "AR-SH-ITA-ZIR",
+      "AS-NH27-GHY-JOR",
+      "AS-NH27-GHY-SIL",
+      "AS-NH27-JOR-DIB",
+      "AS-SH-DIB-TIN",
+      "ML-DR-TUR-BAG",
+      "ML-NH06-GHY-SHL",
+      "ML-NH127B-SHL-TUR",
+      "MN-NH02-IMP-SEN",
+      "MN-NH37-IMP-JIR",
+      "MN-SH-IMP-CCP",
+      "MZ-NH54-AIZ-LUN",
+      "MZ-SH-LUN-SIA",
+      "NL-NH02-KOH-MOK",
+      "NL-NH29-DIM-KOH",
+      "SK-NH10-SIL-GAN",
+      "SK-NH710-GAN-NAM",
+      "TR-NH08-AGA-DHA",
+      "TR-NH08-AGA-UDA"
+    ],
+    "test_corridors": [
+      "AR-NH13-ITA-PAS",
+      "AS-NH15-GHY-TEZ",
+      "ML-SH-SHL-SOH",
+      "MN-NH02-IMP-MOR",
+      "MZ-NH306-SIL-AIZ",
+      "NL-SH-MOK-MON",
+      "SK-SH-GAN-MAN",
+      "TR-SH-UDA-SAB"
+    ]
+  },
+  "risk_classifier": {
+    "selected_model": "XGBoost",
+    "features": [
+      "rainfall_mm",
+      "slope_deg",
+      "elevation_m",
+      "past_incident_count",
+      "is_monsoon",
+      "weather_severity",
+      "road_condition",
+      "traffic_density"
+    ],
+    "holdout": {
+      "accuracy": 0.8082,
+      "macro_f1": 0.8081
+    },
+    "quality_gate": {
+      "macro_f1_min": 0.75,
+      "accuracy_min": 0.75,
+      "passed": true
+    },
+    "leaderboard": [
+      {
+        "model": "XGBoost",
+        "macro_f1": 0.8081,
+        "accuracy": 0.8082
+      },
+      {
+        "model": "LogisticRegression",
+        "macro_f1": 0.8068,
+        "accuracy": 0.8069
+      },
+      {
+        "model": "RandomForest",
+        "macro_f1": 0.7997,
+        "accuracy": 0.7998
+      },
+      {
+        "model": "GradientBoosting",
+        "macro_f1": 0.7988,
+        "accuracy": 0.7989
+      }
+    ],
+    "by_state": {
+      "Arunachal Pradesh": {
+        "accuracy": 0.8027,
+        "macro_f1": 0.7773
+      },
+      "Assam": {
+        "accuracy": 0.8635,
+        "macro_f1": 0.7797
+      },
+      "Manipur": {
+        "accuracy": 0.7776,
+        "macro_f1": 0.771
+      },
+      "Meghalaya": {
+        "accuracy": 0.795,
+        "macro_f1": 0.7902
+      },
+      "Mizoram": {
+        "accuracy": 0.7579,
+        "macro_f1": 0.7548
+      },
+      "Nagaland": {
+        "accuracy": 0.7689,
+        "macro_f1": 0.7685
+      },
+      "Sikkim": {
+        "accuracy": 0.8543,
+        "macro_f1": 0.7588
+      },
+      "Tripura": {
+        "accuracy": 0.8504,
+        "macro_f1": 0.7841
+      }
+    },
+    "by_corridor": {
+      "AR-NH13-ITA-PAS": {
+        "accuracy": 0.8027,
+        "macro_f1": 0.7773
+      },
+      "AS-NH15-GHY-TEZ": {
+        "accuracy": 0.8635,
+        "macro_f1": 0.7797
+      },
+      "ML-SH-SHL-SOH": {
+        "accuracy": 0.795,
+        "macro_f1": 0.7902
+      },
+      "MN-NH02-IMP-MOR": {
+        "accuracy": 0.7776,
+        "macro_f1": 0.771
+      },
+      "MZ-NH306-SIL-AIZ": {
+        "accuracy": 0.7579,
+        "macro_f1": 0.7548
+      },
+      "NL-SH-MOK-MON": {
+        "accuracy": 0.7689,
+        "macro_f1": 0.7685
+      },
+      "SK-SH-GAN-MAN": {
+        "accuracy": 0.8543,
+        "macro_f1": 0.7588
+      },
+      "TR-SH-UDA-SAB": {
+        "accuracy": 0.8504,
+        "macro_f1": 0.7841
+      }
+    }
+  },
+  "delay_regressor": {
+    "selected_model": "XGBoost",
+    "features": [
+      "distance_km",
+      "traffic_density",
+      "rainfall_mm",
+      "road_condition",
+      "historical_avg_minutes",
+      "active_incidents"
+    ],
+    "holdout": {
+      "rmse": 40.84,
+      "mae": 23.98,
+      "r2": 0.9319
+    },
+    "quality_gate": {
+      "r2_min": 0.7,
+      "mae_max": 90.0,
+      "passed": true
+    },
+    "leaderboard": [
+      {
+        "model": "XGBoost",
+        "rmse": 40.84,
+        "mae": 23.98,
+        "r2": 0.9319
+      },
+      {
+        "model": "GradientBoosting",
+        "rmse": 40.98,
+        "mae": 24.18,
+        "r2": 0.9314
+      },
+      {
+        "model": "RandomForest",
+        "rmse": 42.94,
+        "mae": 24.79,
+        "r2": 0.9247
+      },
+      {
+        "model": "LinearRegression",
+        "rmse": 85.33,
+        "mae": 51.59,
+        "r2": 0.7025
+      },
+      {
+        "model": "Ridge",
+        "rmse": 85.33,
+        "mae": 51.58,
+        "r2": 0.7025
+      }
+    ],
+    "by_state": {
+      "Arunachal Pradesh": {
+        "rmse": 69.34,
+        "mae": 41.53,
+        "r2": 0.9072
+      },
+      "Assam": {
+        "rmse": 38.41,
+        "mae": 26.93,
+        "r2": 0.8976
+      },
+      "Manipur": {
+        "rmse": 23.84,
+        "mae": 15.94,
+        "r2": 0.9356
+      },
+      "Meghalaya": {
+        "rmse": 25.68,
+        "mae": 16.84,
+        "r2": 0.9379
+      },
+      "Mizoram": {
+        "rmse": 40.56,
+        "mae": 25.93,
+        "r2": 0.9138
+      },
+      "Nagaland": {
+        "rmse": 55.68,
+        "mae": 31.51,
+        "r2": 0.9372
+      },
+      "Sikkim": {
+        "rmse": 28.24,
+        "mae": 19.57,
+        "r2": 0.9201
+      },
+      "Tripura": {
+        "rmse": 22.68,
+        "mae": 15.65,
+        "r2": 0.9191
+      }
+    },
+    "by_corridor": {
+      "AR-NH13-ITA-PAS": {
+        "rmse": 69.34,
+        "mae": 41.53,
+        "r2": 0.9072
+      },
+      "AS-NH15-GHY-TEZ": {
+        "rmse": 38.41,
+        "mae": 26.93,
+        "r2": 0.8976
+      },
+      "ML-SH-SHL-SOH": {
+        "rmse": 25.68,
+        "mae": 16.84,
+        "r2": 0.9379
+      },
+      "MN-NH02-IMP-MOR": {
+        "rmse": 23.84,
+        "mae": 15.94,
+        "r2": 0.9356
+      },
+      "MZ-NH306-SIL-AIZ": {
+        "rmse": 40.56,
+        "mae": 25.93,
+        "r2": 0.9138
+      },
+      "NL-SH-MOK-MON": {
+        "rmse": 55.68,
+        "mae": 31.51,
+        "r2": 0.9372
+      },
+      "SK-SH-GAN-MAN": {
+        "rmse": 28.24,
+        "mae": 19.57,
+        "r2": 0.9201
+      },
+      "TR-SH-UDA-SAB": {
+        "rmse": 22.68,
+        "mae": 15.65,
+        "r2": 0.9191
+      }
+    }
+  },
+  "artifacts": {
+    "risk_classifier": {
+      "file": "risk_classifier.pkl",
+      "sha256": "22159a4f855bac3de3da5b2dcd3dbb37a96ab14eb40231566142c16bb42f85db"
+    },
+    "delay_regressor": {
+      "file": "delay_regressor.pkl",
+      "sha256": "ebe9fbd00e074636ce2994e06538609391cc607747ccea3adaaac07c54c67f27"
+    }
+  },
+  "warning": "Validated only on synthetic prototype data; not approved for operational decisions."
+}

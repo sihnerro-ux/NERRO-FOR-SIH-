@@ -1,0 +1,8 @@
+{
+  "version": "ner-synthetic-v2-all-state",
+  "previous_version": null,
+  "activated_at": "2026-09-03T17:39:24.372359+00:00",
+  "data_mode": "SIMULATED",
+  "operational_use": false,
+  "report_sha256": "535d8c0bffac285b44e76163d654bc88210d1daa8519400bbecebc55f00be7b6"
+}

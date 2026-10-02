@@ -1,0 +1,29 @@
+{
+  "problem_statement_id": 26002,
+  "generator_version": "ner-synthetic-v2",
+  "generated_at": "2026-09-03T17:35:07.863045+00:00",
+  "data_mode": "SIMULATED",
+  "operational_use": false,
+  "seed": 26002,
+  "row_count": 16000,
+  "state_counts": {
+    "Arunachal Pradesh": 2000,
+    "Assam": 2000,
+    "Manipur": 2000,
+    "Meghalaya": 2000,
+    "Mizoram": 2000,
+    "Nagaland": 2000,
+    "Sikkim": 2000,
+    "Tripura": 2000
+  },
+  "corridor_count": 29,
+  "disrupted_ratio": 0.5094,
+  "confirmed_closure_ratio": 0.182,
+  "mean_delay_minutes": 161.83,
+  "files": [
+    "ner_operational_training.csv",
+    "ner_risk_training.csv",
+    "ner_delay_training.csv"
+  ],
+  "warning": "Synthetic prototype data. Replace with validated historical NER observations before operational use."
+}
