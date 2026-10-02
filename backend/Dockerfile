@@ -10,6 +10,7 @@ COPY backend/requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY backend /app/backend
+RUN test -f /app/backend/alembic.ini && test -f /app/backend/alembic/env.py
 COPY ["SIH Model/nerro_ml/trained_models", "/app/SIH Model/nerro_ml/trained_models"]
 
 EXPOSE 8000
@@ -17,5 +18,4 @@ EXPOSE 8000
 HEALTHCHECK --interval=15s --timeout=5s --start-period=30s --retries=5 \
   CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"
 
-CMD ["sh", "-c", "python -m alembic upgrade head && exec python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --proxy-headers --forwarded-allow-ips='*'"]
-
+CMD ["sh", "-c", "python -m alembic -c /app/backend/alembic.ini upgrade head && exec python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --proxy-headers --forwarded-allow-ips='*'"]
