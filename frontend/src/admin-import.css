@@ -1,0 +1,16 @@
+.data-import-card { display: grid; gap: 13px; }
+.data-import-card .analytics-head p:not(.eyebrow) { margin-top: 4px; color: #7b8b85; font-size: 8px; }
+.data-import-form { display: grid; grid-template-columns: minmax(190px,1.3fr) minmax(220px,1.5fr) minmax(180px,1fr) auto auto; gap: 9px; align-items: end; }
+.data-import-form label { display: grid; gap: 5px; color: #667a72; font-size: 8px; font-weight: 700; }
+.data-import-form input,.data-import-form select { min-width: 0; height: 38px; border: 1px solid #d8e4de; border-radius: 8px; background: #fbfdfc; color: #173a2f; padding: 8px 10px; font: 600 9px 'Inter',sans-serif; }
+.data-import-form input[type='file'] { padding: 7px; }
+.data-import-form button { height: 38px; white-space: nowrap; }
+.import-schema { color: #768780; font-size: 8px; line-height: 1.6; }
+.import-schema code { color: #155f49; background: #edf7f2; padding: 1px 4px; border-radius: 3px; }
+.import-result { display: flex; align-items: flex-start; gap: 8px; padding: 10px 12px; border: 1px solid #b8e2cf; border-radius: 8px; color: #17684c; background: #effaf5; font-size: 8px; }
+.import-result strong,.import-result span { display: block; }
+.import-result strong { margin-bottom: 3px; font-size: 9px; }
+.import-result.applied { border-color: #65cea5; background: #e5f8f0; }
+.import-result.error { border-color: #f1b6b2; color: #9e3932; background: #fff0ef; }
+@media (max-width: 1100px) { .data-import-form { grid-template-columns: 1fr 1fr; }.data-import-form button { justify-content: center; } }
+@media (max-width: 760px) { .data-import-form { grid-template-columns: 1fr; } }
