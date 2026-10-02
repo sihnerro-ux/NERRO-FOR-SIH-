@@ -1,0 +1,105 @@
+
+> ner-logistics-control-tower@0.1.0 dev
+> vite --host 127.0.0.1 --port 5173
+
+
+  VITE v8.2.2  ready in 361 ms
+
+  ➜  Local:   http://127.0.0.1:5173/
+7:58:39 PM [vite] (client) hmr update /src/components/RoutePlannerPanel.tsx
+7:59:17 PM [vite] (client) hmr update /src/styles.css
+8:15:02 PM [vite] (client) hmr update /src/components/RoutePlannerPanel.tsx
+8:15:03 PM [vite] (client) hmr update /src/App.tsx
+8:15:25 PM [vite] (client) hmr update /src/styles.css
+8:20:47 PM [vite] (client) hmr update /src/components/OperationsMap.tsx
+8:20:47 PM [vite] (client) hmr update /src/App.tsx
+8:20:48 PM [vite] (client) hmr update /src/styles.css
+8:31:02 PM [vite] (client) hmr update /src/components/OperationsMap.tsx
+8:32:17 PM [vite] (client) hmr update /src/components/RoutePlannerPanel.tsx
+8:33:10 PM [vite] (client) hmr update /src/components/RoutePlannerPanel.tsx
+8:35:46 PM [vite] (client) hmr update /src/styles.css
+8:36:33 PM [vite] (client) hmr update /src/styles.css
+11:08:50 PM [vite] (client) hmr update /src/components/RoutePlannerPanel.tsx
+11:15:57 PM [vite] (client) hmr update /src/components/OperationsMap.tsx
+11:15:57 PM [vite] (client) hmr update /src/App.tsx
+11:18:03 PM [vite] (client) hmr update /src/components/RoutePlannerPanel.tsx
+11:26:01 PM [vite] (client) hmr update /src/components/OperationsMap.tsx
+11:29:57 PM [vite] (client) hmr update /src/App.tsx
+11:37:32 PM [vite] (client) hmr update /src/components/OperationsMap.tsx
+11:37:32 PM [vite] (client) hmr update /src/App.tsx
+11:37:57 PM [vite] (client) hmr update /src/components/FleetView.tsx
+11:38:08 PM [vite] (client) hmr update /src/styles.css
+11:44:10 PM [vite] (client) hmr update /src/App.tsx, /src/components/RoutePlannerPanel.tsx, /src/components/LoginScreen.tsx
+11:44:11 PM [vite] (client) hmr update /src/components/FleetView.tsx
+11:44:11 PM [vite] (client) hmr update /src/App.tsx
+11:44:11 PM [vite] (client) hmr update /src/styles.css
+11:44:57 PM [vite] (client) hmr update /src/components/FleetView.tsx
+11:47:43 PM [vite] (client) hmr update /src/App.tsx
+12:03:17 AM [vite] (client) hmr update /src/App.tsx, /src/components/RoutePlannerPanel.tsx, /src/components/LoginScreen.tsx
+12:03:17 AM [vite] (client) hmr update /src/App.tsx
+12:05:02 AM [vite] (client) hmr update /src/components/FleetView.tsx
+12:05:07 AM [vite] (client) hmr update /src/components/FleetView.tsx
+12:05:38 AM [vite] (client) hmr update /src/components/OperationsMap.tsx
+12:05:38 AM [vite] (client) hmr update /src/styles.css
+8:53:14 AM [vite] (client) hmr update /src/components/OperationsMap.tsx
+8:53:43 AM [vite] (client) hmr update /src/components/OperationsMap.tsx
+8:54:25 AM [vite] (client) hmr update /src/App.tsx
+8:55:50 AM [vite] (client) hmr update /src/App.tsx
+10:12:25 AM [vite] (client) hmr update /src/App.tsx, /src/components/RoutePlannerPanel.tsx, /src/components/LoginScreen.tsx
+10:13:53 AM [vite] (client) hmr update /src/App.tsx
+10:14:34 AM [vite] (client) hmr update /src/styles.css
+10:15:56 AM [vite] (client) hmr update /src/components/FieldOperationsView.tsx
+10:16:25 AM [vite] (client) hmr update /src/styles.css
+10:16:57 AM [vite] (client) hmr update /src/components/OperationsMap.tsx
+10:18:24 AM [vite] (client) hmr update /src/components/FieldOperationsView.tsx
+10:22:45 AM [vite] (client) hmr update /src/App.tsx
+10:23:15 AM [vite] (client) hmr update /src/styles.css
+10:24:06 AM [vite] (client) hmr update /src/components/LoginScreen.tsx
+10:24:06 AM [vite] (client) hmr update /src/styles.css
+10:25:38 AM [vite] (client) hmr update /src/App.tsx
+10:25:58 AM [vite] (client) hmr update /src/App.tsx
+10:26:38 AM [vite] (client) hmr update /src/App.tsx
+10:33:03 AM [vite] (client) hmr update /src/App.tsx, /src/components/RoutePlannerPanel.tsx, /src/components/LoginScreen.tsx, /src/components/FieldOperationsView.tsx
+10:33:38 AM [vite] (client) hmr update /src/App.tsx
+10:33:38 AM [vite] (client) hmr update /src/styles.css
+10:55:24 AM [vite] (client) hmr update /src/App.tsx
+10:55:59 AM [vite] (client) hmr update /src/App.tsx
+10:55:59 AM [vite] (client) hmr update /src/styles.css
+11:12:55 AM [vite] (client) hmr update /src/App.tsx, /src/components/RoutePlannerPanel.tsx, /src/components/LoginScreen.tsx, /src/components/FieldOperationsView.tsx
+11:12:55 AM [vite] (client) hmr update /src/App.tsx
+11:13:24 AM [vite] (client) hmr update /src/components/RoutePlannerPanel.tsx
+11:13:41 AM [vite] (client) hmr update /src/App.tsx
+11:13:59 AM [vite] (client) hmr update /src/styles.css
+11:14:16 AM [vite] (client) hmr update /src/components/OperationsMap.tsx
+11:14:16 AM [vite] (client) hmr update /src/App.tsx
+11:15:46 AM [vite] (client) hmr update /src/App.tsx, /src/components/RoutePlannerPanel.tsx, /src/components/LoginScreen.tsx, /src/components/FieldOperationsView.tsx
+11:15:46 AM [vite] (client) hmr update /src/App.tsx
+11:16:30 AM [vite] (client) hmr update /src/components/DeliveriesView.tsx
+11:17:38 AM [vite] (client) hmr update /src/styles.css
+11:17:55 AM [vite] (client) hmr update /src/App.tsx
+11:27:25 AM [vite] (client) hmr update /src/components/FleetView.tsx
+11:27:25 AM [vite] (client) hmr update /src/components/DeliveriesView.tsx
+11:51:45 AM [vite] (client) hmr update /src/App.tsx, /src/components/RoutePlannerPanel.tsx, /src/components/LoginScreen.tsx, /src/components/FieldOperationsView.tsx
+11:52:10 AM [vite] (client) hmr update /src/App.tsx
+11:52:51 AM [vite] (client) hmr update /src/styles.css
+12:09:28 PM [vite] (client) hmr update /src/App.tsx, /src/components/RoutePlannerPanel.tsx, /src/components/LoginScreen.tsx, /src/components/FieldOperationsView.tsx
+12:09:57 PM [vite] (client) hmr update /src/App.tsx
+12:10:40 PM [vite] (client) hmr update /src/styles.css
+12:54:54 PM [vite] (client) hmr update /src/App.tsx
+12:54:54 PM [vite] (client) hmr update /src/App.tsx
+1:05:36 PM [vite] (client) hmr update /src/App.tsx, /src/components/RoutePlannerPanel.tsx, /src/components/LoginScreen.tsx, /src/components/FieldOperationsView.tsx
+1:05:37 PM [vite] (client) hmr update /src/components/IncidentReviewView.tsx
+1:05:37 PM [vite] (client) hmr update /src/components/OperationsMap.tsx
+1:37:27 PM [vite] (client) hmr update /src/App.tsx, /src/components/RoutePlannerPanel.tsx, /src/components/LoginScreen.tsx, /src/components/FieldOperationsView.tsx, /src/components/EvidenceImage.tsx
+1:37:28 PM [vite] (client) page reload index.html
+1:37:28 PM [vite] (client) page reload src/main.tsx
+1:38:13 PM [vite] (client) hmr update /src/App.tsx
+1:38:13 PM [vite] (client) hmr update /src/styles.css
+1:41:31 PM [vite] (client) hmr update /src/App.tsx, /src/components/RoutePlannerPanel.tsx, /src/components/LoginScreen.tsx, /src/components/FieldOperationsView.tsx, /src/components/EvidenceImage.tsx
+1:41:32 PM [vite] (client) hmr update /src/App.tsx
+6:08:47 PM [vite] (client) hmr update /src/components/OperationsMap.tsx
+6:09:01 PM [vite] (client) hmr update /src/App.tsx
+6:20:47 PM [vite] (client) hmr update /src/App.tsx, /src/components/RoutePlannerPanel.tsx, /src/components/LoginScreen.tsx, /src/components/FieldOperationsView.tsx, /src/components/EvidenceImage.tsx
+6:21:40 PM [vite] (client) hmr update /src/components/AdministrationView.tsx
+6:22:57 PM [vite] (client) page reload src/main.tsx
+6:28:28 PM [vite] (client) hmr update /src/App.tsx, /src/components/RoutePlannerPanel.tsx, /src/components/LoginScreen.tsx, /src/components/FieldOperationsView.tsx, /src/components/EvidenceImage.tsx

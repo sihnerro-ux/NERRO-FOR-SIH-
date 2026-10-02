@@ -1,0 +1,2 @@
+entity_type,id,name,facility_type,district,longitude,latitude
+FACILITY,FAC-EXAMPLE-002,Example medical supply node,MEDICAL_WAREHOUSE,Imphal West Manipur,93.94,24.82

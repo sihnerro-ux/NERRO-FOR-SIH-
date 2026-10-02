@@ -1,0 +1,30 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "entity_type": "FACILITY",
+        "id": "FAC-EXAMPLE-001",
+        "name": "Example district relief node",
+        "facility_type": "RELIEF_DEPOT",
+        "district": "East Khasi Hills, Meghalaya"
+      },
+      "geometry": { "type": "Point", "coordinates": [91.89, 25.58] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "entity_type": "ROAD_SEGMENT",
+        "id": "ROAD-EXAMPLE-001",
+        "road_name": "Example monitored connector",
+        "from_node": "EXAMPLE_A",
+        "to_node": "EXAMPLE_B",
+        "state": "Meghalaya",
+        "accessibility": "UNKNOWN",
+        "confidence": 70
+      },
+      "geometry": { "type": "LineString", "coordinates": [[91.86, 25.55], [91.94, 25.61]] }
+    }
+  ]
+}

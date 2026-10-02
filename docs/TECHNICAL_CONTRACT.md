@@ -121,7 +121,10 @@ RoutePreference   = BALANCED | SAFETY_FIRST | FASTEST_FEASIBLE
   "heading": 34,
   "gps_freshness": "LIVE",
   "last_position_at": "2026-09-01T14:36:00Z",
-  "active_delivery_id": "DEL-1001"
+  "active_delivery_id": "DEL-1001",
+  "data_mode": "LIVE",
+  "source": "AIS-140-GATEWAY",
+  "position_accuracy_m": 7.2
 }
 ```
 
@@ -205,6 +208,7 @@ RoutePreference   = BALANCED | SAFETY_FIRST | FASTEST_FEASIBLE
 | GET | `/api/v1/road-segments/{id}` | Segment detail and risk factors |
 | POST | `/api/v1/road-segments/{id}/override` | Audited administrator status override |
 | GET | `/api/v1/facilities` | Warehouses, hospitals, and supply centres |
+| GET | `/api/v1/locations/search?q=` | Explicit, cached NER place search for route endpoints |
 
 ### Routing
 
@@ -213,6 +217,10 @@ RoutePreference   = BALANCED | SAFETY_FIRST | FASTEST_FEASIBLE
 | POST | `/api/v1/routes/plan` | Return recommended/fastest/lowest-risk routes |
 | POST | `/api/v1/routes/recalculate` | Replan from current vehicle position |
 | GET | `/api/v1/routes/{id}` | Route geometry, segments, risk, and reasoning |
+
+`routes/plan` defaults to `LIVE_WITH_FALLBACK`: OSRM supplies external OpenStreetMap geometry and profile-based travel time, while the platform matches monitored NER segments and applies confirmed closures, weather, incident and ML advisory risk locally. It returns `routing_source` and `routing_status`. `CURATED_ONLY` is available for deterministic testing and offline operations. External profile duration must not be described as live traffic.
+
+The request may use known `source_facility_id` / `destination_facility_id` values or arbitrary `source_location` / `destination_location` objects containing labels and WGS84 coordinates. Custom coordinates are constrained to the NER operating envelope. Public geocoding is user-triggered only, limited to one request per second and cached; autocomplete is prohibited.
 
 ### Deliveries and fleet
 
@@ -226,6 +234,9 @@ RoutePreference   = BALANCED | SAFETY_FIRST | FASTEST_FEASIBLE
 | GET | `/api/v1/vehicles` | Fleet list |
 | GET | `/api/v1/vehicles/{id}` | Vehicle, telemetry, and assignment |
 | POST | `/api/v1/vehicles/{id}/positions` | Receive GPS position |
+| GET | `/api/v1/vehicles/{id}/positions` | Read append-only accepted position history |
+
+GPS ingestion accepts latitude, longitude, speed, heading, accuracy, device-recorded time, and source. It rejects out-of-order timestamps and coordinates outside the NER operational boundary. Accepted telemetry changes only vehicle position/provenance and is recorded as an immutable `GPS_POSITION_RECEIVED` audit event.
 
 ### Incidents
 
@@ -387,7 +398,20 @@ Repeating the same synchronized operation returns its original result instead of
 
 ---
 
-## 10. Repository layout
+## 10. NER-wide live route assessment
+
+For an explicit origin and destination selected inside the eight NER states:
+
+1. The geocoder resolves the selected place to coordinates.
+2. The road-network provider returns one or more routable road geometries and profile-based ETAs.
+3. The service samples up to eight points along each candidate and requests a 24-hour precipitation forecast and elevation for those points.
+4. Nearby non-rejected incidents and any monitored road segments are attached to the candidate.
+5. The submitted ML risk and delay models infer an advisory probability and delay from rainfall, terrain slope/elevation, incident count, road condition, distance and seasonal context.
+6. Candidates are ranked by the user preference. Confirmed blocked segments exclude a candidate before ranking.
+
+Each returned route exposes `ml_risk_probability`, `predicted_delay_minutes`, `live_rainfall_mm_24h`, `terrain_elevation_m`, `risk_factors`, and `risk_coverage_percent` so the UI can show why it was ranked. ML is advisory only: it never creates a blocked-road status. Coverage below 100% means parts of the route lack the platform's monitored road-segment data, even though the live weather/terrain assessment ran.
+
+## 11. Repository layout
 
 ```text
 frontend/
@@ -425,7 +449,7 @@ Frontend features group UI and hooks by domain. Backend domain models do not imp
 
 ---
 
-## 11. First implementation milestone
+## 12. First implementation milestone
 
 The first runnable slice must provide:
 
@@ -437,4 +461,3 @@ The first runnable slice must provide:
 6. One deterministic simulation event that raises road risk.
 
 Database persistence, authentication, full routing, and offline synchronization follow after this vertical slice is stable.
-
