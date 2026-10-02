@@ -4,7 +4,6 @@ import base64
 from dataclasses import dataclass
 from datetime import UTC, datetime
 import hashlib
-from io import BytesIO
 import os
 from pathlib import Path
 import re
@@ -45,18 +44,40 @@ class EvidenceStorage:
     def _client(self):
         if not self.endpoint:
             return None
-        from minio import Minio
+        import boto3
+        from botocore.config import Config
 
-        return Minio(
-            self.endpoint,
-            access_key=os.getenv("S3_ACCESS_KEY", ""),
-            secret_key=os.getenv("S3_SECRET_KEY", ""),
-            secure=os.getenv("S3_SECURE", "false").lower() == "true",
+        endpoint = self.endpoint
+        if "://" not in endpoint:
+            scheme = "https" if os.getenv("S3_SECURE", "false").lower() == "true" else "http"
+            endpoint = f"{scheme}://{endpoint}"
+        return boto3.client(
+            "s3",
+            endpoint_url=endpoint,
+            aws_access_key_id=os.getenv("S3_ACCESS_KEY", ""),
+            aws_secret_access_key=os.getenv("S3_SECRET_KEY", ""),
+            region_name=os.getenv("S3_REGION", "us-east-1"),
+            config=Config(
+                signature_version="s3v4",
+                s3={"addressing_style": os.getenv("S3_ADDRESSING_STYLE", "path")},
+                request_checksum_calculation="when_required",
+                response_checksum_validation="when_required",
+            ),
         )
 
     def _ensure_bucket(self, client) -> None:
-        if not client.bucket_exists(self.bucket):
-            client.make_bucket(self.bucket)
+        if os.getenv("S3_AUTO_CREATE_BUCKET", "true").lower() != "true":
+            return
+        from botocore.exceptions import ClientError
+
+        try:
+            client.head_bucket(Bucket=self.bucket)
+        except ClientError as exc:
+            if str(exc.response.get("Error", {}).get("Code")) not in {"404", "NoSuchBucket", "NotFound"}:
+                raise
+            region = os.getenv("S3_REGION", "us-east-1")
+            options = {} if region == "us-east-1" else {"CreateBucketConfiguration": {"LocationConstraint": region}}
+            client.create_bucket(Bucket=self.bucket, **options)
 
     @staticmethod
     def _decode(data_url: str) -> tuple[str, bytes]:
@@ -87,7 +108,7 @@ class EvidenceStorage:
         client = self._client()
         if client:
             self._ensure_bucket(client)
-            client.put_object(self.bucket, object_key, BytesIO(content), len(content), content_type=content_type)
+            client.put_object(Bucket=self.bucket, Key=object_key, Body=content, ContentType=content_type)
             storage_backend = "S3"
         else:
             target = self.local_directory / object_key
@@ -120,12 +141,11 @@ class EvidenceStorage:
             client = self._client()
             if not client:
                 return None
-            response = client.get_object(self.bucket, object_key)
+            response = client.get_object(Bucket=self.bucket, Key=object_key)["Body"]
             try:
                 content = response.read()
             finally:
                 response.close()
-                response.release_conn()
         else:
             target = (self.local_directory / object_key).resolve()
             if self.local_directory.resolve() not in target.parents or not target.is_file():
