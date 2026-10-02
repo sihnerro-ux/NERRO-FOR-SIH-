@@ -1,0 +1,16 @@
+{
+  "name": "NER Logistics Field Operations",
+  "short_name": "NER Logistics",
+  "description": "Offline-capable field reporting and logistics accessibility intelligence for North Eastern India.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f3f7f4",
+  "theme_color": "#071f18",
+  "categories": ["government", "productivity", "navigation"],
+  "icons": [
+    { "src": "/icons/ner-logistics.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icons/ner-logistics-maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
